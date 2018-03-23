@@ -11,7 +11,7 @@
 
 #define BARCODE_MAXLEN  1023
 
-void player (int argc, char *argv[])
+void player (char *argv[])
 {
     mpg123_handle *mh;
     unsigned char *buffer;
@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
         }
 
         printf("%s\n", code);
-        player(argc, argv);
+        player(argv);
 
         fflush(stdout);
     }
