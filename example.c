@@ -80,8 +80,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    if (install_done(SIGINT) ||
-        install_done(SIGHUP) ||
+    if (install_done(SIGHUP) ||
         install_done(SIGTERM)) {
         fprintf(stderr, "Cannot install signal handlers: %s.\n", strerror(errno));
         return EXIT_FAILURE;

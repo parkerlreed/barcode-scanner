@@ -172,6 +172,7 @@ size_t barcode_read(barcode_dev *const dev,
                     char *const buffer, const size_t length,
                     const unsigned long maximum_ms)
 {
+    memset(buffer, 0, length);
     struct itimerspec it;
     size_t len = 0;
     int status = ETIMEDOUT;
@@ -257,12 +258,6 @@ size_t barcode_read(barcode_dev *const dev,
             break;
         }
     }
-
-    /* Add terminator character to buffer. */
-    if (len + 1 < length)
-        buffer[len + 1] = '\0';
-    else
-        buffer[length - 1] = '\0';
 
     /* Cancel timeout. */
     it.it_value.tv_sec = 0;
